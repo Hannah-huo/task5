@@ -1,17 +1,13 @@
-const database = require('./datbase')
+var dat = require('./datbase')
 const discount = [
     {barcode: 'ITEM000001', count: 1},
     {barcode: 'ITEM000005', count: 1}
 ]
+const database = dat.loadAllItems()
 let total = 0;
 let discountMoney = 0;
 
-module.exports = function main() {
-    loadAllItems: loadAllItems
-    printInventory:printInventory
-};
-
-function printInventory(inputs) {
+module.exports = function printInventory(inputs) {
     //step1；计算购买商品count:[{item1:3},{item2:4}]
     let goodsInfo = [];
     for (let item of inputs) {
@@ -43,6 +39,7 @@ function printInventory(inputs) {
         '**********************'
     console.log(subtotalInfo + discountInfo + finalResult)
 }
+
 //查找某个元素是否在集合中出现
 function findCode(goodsInfo, item) {
     for (let i of goodsInfo) {
